@@ -1,0 +1,15 @@
+@import './navbar';
+@import './sidebar';
+@import './footer';
+
+@import './table';
+
+.overflow-x-auto {
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+}
+
+.overflow-y-auto {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+}

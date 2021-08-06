@@ -1,0 +1,188 @@
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import './functions';
+@import './variables';
+
+.table {
+    thead {
+        background: $tableHeadBdDefault;
+        color: $tableHeadColDefault;
+    }
+
+    tbody {
+        tr {
+            &:nth-child(odd) {
+                background: $tableBodyOddBgDefault;
+                color: $tableBodyOddColDefault;
+            }
+            &:nth-child(even) {
+                background: $tableBodyEvenBgDefault;
+                color: $tableBodyEvenColDefault;
+            }
+        }
+    }
+}
+
+@mixin DISPLAY_BLOCK {
+    display: block;
+}
+
+@media (max-width: map-get($map: $grid-breakpoints, $key: "sm")) {
+    .table.table-sm {
+        @include DISPLAY_BLOCK;
+
+        thead {
+            @include DISPLAY_BLOCK;
+            tr {
+                display: none;
+            }
+        }
+
+        tbody {
+            @include DISPLAY_BLOCK;
+        }
+
+        tr {
+            @include DISPLAY_BLOCK;
+        }
+
+        th {
+            @include DISPLAY_BLOCK;
+        }
+
+        td {
+            @include DISPLAY_BLOCK;
+            position: relative;
+            padding-left: 50%;
+            &:before {
+                content: attr(data-th) " : ";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 50%;
+                padding: 0.75rem;
+                white-space: nowrap;
+            }
+        }
+    }
+}
+
+@media (max-width: map-get($map: $grid-breakpoints, $key: "md")) {
+    .table.table-md {
+        @include DISPLAY_BLOCK;
+
+        thead {
+            @include DISPLAY_BLOCK;
+            tr {
+                display: none;
+            }
+        }
+
+        tbody {
+            @include DISPLAY_BLOCK;
+        }
+
+        tr {
+            @include DISPLAY_BLOCK;
+        }
+
+        th {
+            @include DISPLAY_BLOCK;
+        }
+
+        td {
+            @include DISPLAY_BLOCK;
+            position: relative;
+            padding-left: 50%;
+            &:before {
+                content: attr(data-th) " : ";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 50%;
+                padding: 0.75rem;
+                white-space: nowrap;
+            }
+        }
+    }
+}
+
+@media (max-width: map-get($map: $grid-breakpoints, $key: "lg")) {
+    .table.table-lg {
+        @include DISPLAY_BLOCK;
+
+        thead {
+            @include DISPLAY_BLOCK;
+            tr {
+                display: none;
+            }
+        }
+
+        tbody {
+            @include DISPLAY_BLOCK;
+        }
+
+        tr {
+            @include DISPLAY_BLOCK;
+        }
+
+        th {
+            @include DISPLAY_BLOCK;
+        }
+
+        td {
+            @include DISPLAY_BLOCK;
+            position: relative;
+            padding-left: 50%;
+            &:before {
+                content: attr(data-th) " : ";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 50%;
+                padding: 0.75rem;
+                white-space: nowrap;
+            }
+        }
+    }
+}
+
+@media (max-width: map-get($map: $grid-breakpoints, $key: "xl")) {
+    .table.table-xl {
+        @include DISPLAY_BLOCK;
+
+        thead {
+            @include DISPLAY_BLOCK;
+            tr {
+                display: none;
+            }
+        }
+
+        tbody {
+            @include DISPLAY_BLOCK;
+        }
+
+        tr {
+            @include DISPLAY_BLOCK;
+        }
+
+        th {
+            @include DISPLAY_BLOCK;
+        }
+
+        td {
+            @include DISPLAY_BLOCK;
+            position: relative;
+            padding-left: 50%;
+            &:before {
+                content: attr(data-th) " : ";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 50%;
+                padding: 0.75rem;
+                white-space: nowrap;
+            }
+        }
+    }
+}

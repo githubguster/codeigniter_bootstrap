@@ -1,0 +1,11 @@
+@mixin browser_function($function, $values...) {
+    -webkit-#{function}: $values;
+    -moz-#{function}: $values;
+    -ms-#{function}: $values;
+    -o-#{function}: $values;
+    #{function}: $values;
+}
+
+@mixin transition($values...) {
+    @include browser_function(transition, $values)
+}
