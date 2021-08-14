@@ -35,41 +35,48 @@ class SidebarItem extends React.Component<NavbarModule.Navbar> {
         if(this.props.navbarIcon.subMenu) {
             let id = this.props.number + '-' + Math.floor(Math.random() * Number.MAX_VALUE).toString(16);
             return (
-                <ReactBootstrap.NavDropdown id={id} title={this.props.name} active={this.props.navbarIcon.subMenu.some((item, index, array) => item.isAction === true)}>
-                    {
-                        this.props.navbarIcon.isImage && this.props.navbarIcon.image 
-                        ? <ReactBootstrap.Image roundedCircle src={this.props.navbarIcon.image} alt={this.props.navbarIcon.imageName || ''} width={this.props.navbarIcon.width || 16} height={this.props.navbarIcon.height || 16}></ReactBootstrap.Image>
-                        : this.props.navbarIcon.css && <span className={this.props.navbarIcon.css}></span>
-                    }
-                    {
-                        this.props.badgeNumber > 0 && <ReactBootstrap.Badge pill variant='danger'>{this.props.badgeNumber}</ReactBootstrap.Badge>
-                    }
-                    {
-                        this.props.navbarIcon.subMenu.map((item, _) => {
-                            if(item.isDivider) {
-                                return (
-                                    <ReactBootstrap.NavDropdown.Divider></ReactBootstrap.NavDropdown.Divider>
-                                );
-                            } else {
-                                return (
-                                    <ReactBootstrap.NavDropdown.Item href={item.href} onClick={(event) => this.clickHandle(event, item.onClick)} active={item.isAction}>
-                                        {
-                                            item.isImage && item.image
-                                            ? <ReactBootstrap.Image roundedCircle src={item.image} alt={item.imageName || ''} width={item.width || 16} height={item.height || 16}></ReactBootstrap.Image>
-                                            : item.css && <span className={item.css}></span>
-                                        }
-                                        {
-                                            item.name
-                                        }
-                                        {
-                                            item.badgeNumber > 0 && <ReactBootstrap.Badge pill variant='danger'>{item.badgeNumber}</ReactBootstrap.Badge>
-                                        }
-                                    </ReactBootstrap.NavDropdown.Item>
-                                );
+                <ReactBootstrap.Accordion defaultActiveKey={this.props.navbarIcon.subMenu.some((item, index, array) => item.isAction === true) && id}>
+                    <ReactBootstrap.Accordion.Toggle className='dropdown-toggle text-nowrap nav-dropdown-menu' eventKey={id}>
+                        {
+                            this.props.navbarIcon.isImage && this.props.navbarIcon.image 
+                            ? <ReactBootstrap.Image roundedCircle src={this.props.navbarIcon.image} alt={this.props.navbarIcon.imageName || ''} width={this.props.navbarIcon.width || 16} height={this.props.navbarIcon.height || 16}></ReactBootstrap.Image>
+                            : this.props.navbarIcon.css && <span className={this.props.navbarIcon.css}></span>
+                        }
+                        { this.props.name }
+                        {
+                            this.props.badgeNumber > 0 && <ReactBootstrap.Badge pill variant='danger'>{this.props.badgeNumber}</ReactBootstrap.Badge>
+                        }
+                    </ReactBootstrap.Accordion.Toggle>
+                    <ReactBootstrap.Accordion.Collapse eventKey={id}>
+                        <React.Fragment>
+                            {
+                                this.props.navbarIcon.subMenu.map((item, _) => {
+                                    if(item.isDivider) {
+                                        return (
+                                            <ReactBootstrap.NavDropdown.Divider></ReactBootstrap.NavDropdown.Divider>
+                                        );
+                                    } else {
+                                        return (
+                                            <ReactBootstrap.Nav.Link className='text-nowrap' href={item.href} onClick={(event) => this.clickHandle(event, item.onClick)} active={item.isAction}>
+                                                {
+                                                    item.isImage && item.image
+                                                    ? <ReactBootstrap.Image roundedCircle src={item.image} alt={item.imageName || ''} width={item.width || 16} height={item.height || 16}></ReactBootstrap.Image>
+                                                    : item.css && <span className={item.css}></span>
+                                                }
+                                                {
+                                                    item.name
+                                                }
+                                                {
+                                                    item.badgeNumber > 0 && <ReactBootstrap.Badge pill variant='danger'>{item.badgeNumber}</ReactBootstrap.Badge>
+                                                }
+                                            </ReactBootstrap.Nav.Link>
+                                        );
+                                    }
+                                })
                             }
-                        })
-                    }
-                </ReactBootstrap.NavDropdown>
+                        </React.Fragment>
+                    </ReactBootstrap.Accordion.Collapse>
+                </ReactBootstrap.Accordion>
             );
         } else if(this.props.navbarIcon.isDivider) {
             return (
@@ -77,7 +84,7 @@ class SidebarItem extends React.Component<NavbarModule.Navbar> {
             )
         } else {
             return (
-                <ReactBootstrap.Nav.Link href={this.props.href} onClick={(event) => this.clickHandle(event, this.props.onClick)} active={this.props.isAction}>
+                <ReactBootstrap.Nav.Link className='text-nowrap' href={this.props.href} onClick={(event) => this.clickHandle(event, this.props.onClick)} active={this.props.isAction}>
                     {
                         this.props.navbarIcon.isImage && this.props.navbarIcon.image 
                         ? <ReactBootstrap.Image roundedCircle src={this.props.navbarIcon.image} alt={this.props.navbarIcon.imageName || ''} width={this.props.navbarIcon.width || 16} height={this.props.navbarIcon.height || 16}></ReactBootstrap.Image>
@@ -129,11 +136,11 @@ export class Sidebar extends React.Component<SidebarModule.SidebarProps> {
     render() {
         let id = this.props.id || 'app-sidebar';
         return (
-            <div className={'sidebar' + (this.props.className ? ' ' + this.props.className : '') + (this.props.expand ? ' sidebar-expand-' + this.props.expand : ' sidebar-expand') + (this.props.variant ? ' navbar-' + this.props.variant : ' navbar-light')}>
-                {/* <ReactBootstrap.Navbar.Toggle aria-controls={id}></ReactBootstrap.Navbar.Toggle> */}
-                <div id={id} className={'sidebar-nav' + (this.props.navClassName ? ' ' + this.props.navClassName : '') + (this.props.active ? ' active' : '')}>
-                    <div className='d-flex flex-column w-100 h-100'>
-                        <div className='flex-fill overflow-y-auto'>
+            <div className={'row m-0 p-0 sidebar' + (this.props.className ? ' ' + this.props.className : '') + (this.props.expand ? ' sidebar-expand-' + this.props.expand : ' sidebar-expand') + (this.props.variant ? ' navbar-' + this.props.variant : ' navbar-light')}>
+                <div className={'m-0 p-0 sidebar-nav' + (this.props.navClassName ? ' ' + this.props.navClassName : '') + (this.props.active ? ' active' : '') + (this.props.expand ? ' col-' + this.props.expand + '-' + 1 : ' col-1') }>
+                    <ReactBootstrap.Navbar.Toggle data-toggle='collapse' data-target={'#' + id}></ReactBootstrap.Navbar.Toggle>
+                    <div id={id} className='d-flex flex-column collapse w-100 h-100' role='table' aria-orientation='vertical'>
+                        <div className={(this.props.expand ? 'flex-' + this.props.expand + '-fill' : 'flex-fill')}>
                             {this.props.top && <SidebarItems modules={this.props.top.modules} />}
                             {this.props.default && <SidebarItems modules={this.props.default.modules} />}
                         </div>
@@ -142,7 +149,7 @@ export class Sidebar extends React.Component<SidebarModule.SidebarProps> {
                         </ReactBootstrap.Row>
                     </div>
                 </div>
-                <div className={'sidebar-content' + (this.props.contentClassName ? ' ' + this.props.contentClassName : '')}>
+                <div className={'sidebar-content' + (this.props.contentClassName ? ' ' + this.props.contentClassName : '') + (this.props.expand ? ' col-' + this.props.expand : ' col')}>
                     {this.props.contentElement && this.props.contentElement}
                 </div>
             </div>

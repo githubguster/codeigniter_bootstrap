@@ -82,8 +82,8 @@ export function GetNumberTablePagination(start: number, end: number, index: numb
 }
 
 export interface TableProps extends Common.CommonElementProps {
-    size?: string,
-    head: TableHead[],
-    body?: TableBody[][],
-    page?: TablePagination,
+    size?: string;
+    head: TableHead[];
+    body?: TableBody[][];
+    page?: TablePagination;
 }

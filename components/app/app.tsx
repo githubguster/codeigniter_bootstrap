@@ -47,9 +47,22 @@ const Narbar : Bootstrap.NavbarModule.NavbarProps = {
                 isImage: false,
                 subMenu: [{
                     isImage: false,
-                    name: 'Action',
-                    href: '#dropdown-action',
+                    name: 'Action1',
+                    href: '#dropdown1-action1',
                     isAction: true,
+                }]
+            },
+            href: '#dropdown1',
+        },{
+            number: 3,
+            name: 'Dropdown2',
+            navbarIcon: {
+                isImage: false,
+                subMenu: [{
+                    isImage: false,
+                    name: 'Action2',
+                    href: '#dropdown2-action2',
+                    isAction: false,
                 }]
             },
             href: '#dropdown1',
@@ -111,20 +124,33 @@ const Sidebar : Bootstrap.SidebarModule.SidebarProps = {
     bottom: {
         modules: [{
             number: 2,
-            name: 'Dropdown2',
+            name: 'Dropdown3',
             navbarIcon: {
                 isImage: false,
                 subMenu: [{
                     isImage: false,
-                    name: 'Action',
-                    href: '#dropdown-action',
+                    name: 'Action3',
+                    href: '#dropdown3-action3',
                     isAction: true,
+                }]
+            },
+            href: '#dropdown2',
+        },{
+            number: 3,
+            name: 'Dropdown4',
+            navbarIcon: {
+                isImage: false,
+                subMenu: [{
+                    isImage: false,
+                    name: 'Action4',
+                    href: '#dropdown4-action4',
+                    isAction: false,
                 }]
             },
             href: '#dropdown2',
         }]
     },
-    contentClassName: 'p-2 m-2',
+    contentClassName: 'm-2',
     active: true,
     expand: 'md',
 }

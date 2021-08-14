@@ -22,7 +22,7 @@ export type NavbarIcon = Common.CommonElementProps & {
     height?: number,
     css?: string,
     isDivider?: boolean,
-    subMenu?: NavbarItem[]
+    subMenu?: NavbarItem[],
 }
 
 export type Navbar = Common.CommonElementProps & {
@@ -39,15 +39,15 @@ export type NavbarModules = Common.CommonElementProps & {
 }
 
 export interface NavbarProps extends Common.CommonElementProps {
-    left?: NavbarModules,
-    default?: NavbarModules,
-    right?: NavbarModules,
-    href?: string,
-    icon?: string,
-    title?: string,
-    width?: number,
-    height?: number,
-    expand?: Common.CommonElementExpand,
-    fixed?: Common.CommonElementFixed,
+    left?: NavbarModules;
+    default?: NavbarModules;
+    right?: NavbarModules;
+    href?: string;
+    icon?: string;
+    title?: string;
+    width?: number;
+    height?: number;
+    expand?: Common.CommonElementExpand;
+    fixed?: Common.CommonElementFixed;
     variant?: 'light' | 'dark';
 }

@@ -9,8 +9,7 @@
 
     .sidebar-nav {
         display: none;
-        min-width: $sidebarMinDefault;
-        max-width: $sidebarMaxDefault;
+        overflow: auto;
         background-color: $sidebarBgDefault;
 
         &.active {
@@ -33,22 +32,14 @@
             }
         }
 
-        @if ($sidebarDropDown) {
-            .dropdown-menu {
-                background-color: $sidebarBgDefault;
-                border-color: $sidebarBgHighlight;
-                .dropdown-item {
-                    color: $sidebarColDefault;
-                    &:hover, &:focus, &.active {
-                        color: $sidebarColHighlight;
-                        background-color: $sidebarBgHighlight; 
-                    }
-                }
-                .dropdown-divider {
-                    border-top-color: $sidebarBgHighlight; 
-                }
-            }
+        .nav-dropdown-menu {
+            @extend .nav-link;
+            display: block;
+            padding: .5rem 1rem;        
+            background-color: transparent;
+            border: 0;
         }
+
         .nav-item.active, .nav-item.show {
             .nav-link, .nav-link:hover, .nav-link:focus {
                 color: $sidebarColHighlight;
@@ -68,114 +59,122 @@
     }
 }
 
-// @media (min-width: map-get($map: $grid-breakpoints, $key: "sm")) {
-//     .sidebar {
-//         &.sidebar-expand-sm {
-//             .navbar-toggler {
-//                 display: none;
-//             }
-//         }
-//     }
-// }
+@media (min-width: map-get($map: $grid-breakpoints, $key: "sm")) {
+    .sidebar {
+        &.sidebar-expand-sm {
+            .navbar-toggler {
+                display: none;
+            }
+        }
+    }
+}
 
-// @media (min-width: map-get($map: $grid-breakpoints, $key: "md")) {
-//     .sidebar {
-//         &.sidebar-expand-md {
-//             .navbar-toggler {
-//                 display: none;
-//             }
-//         }
-//     }
-// }
+@media (min-width: map-get($map: $grid-breakpoints, $key: "md")) {
+    .sidebar {
+        &.sidebar-expand-md {
+            .navbar-toggler {
+                display: none;
+            }
+        }
+    }
+}
 
-// @media (min-width: map-get($map: $grid-breakpoints, $key: "lg")) {
-//     .sidebar {
-//         &.sidebar-expand-lg {
-//             .navbar-toggler {
-//                 display: none;
-//             }
-//         }
-//     }
-// }
+@media (min-width: map-get($map: $grid-breakpoints, $key: "lg")) {
+    .sidebar {
+        &.sidebar-expand-lg {
+            .navbar-toggler {
+                display: none;
+            }
+        }
+    }
+}
 
-// @media (min-width: map-get($map: $grid-breakpoints, $key: "xl")) {
-//     .sidebar {
-//         &.sidebar-expand-xl {
-//             .navbar-toggler {
-//                 display: none;
-//             }
-//         }
-//     }
-// }
+@media (min-width: map-get($map: $grid-breakpoints, $key: "xl")) {
+    .sidebar {
+        &.sidebar-expand-xl {
+            .navbar-toggler {
+                display: none;
+            }
+        }
+    }
+}
 
-// @media (max-width: map-get($map: $grid-breakpoints, $key: "sm")) {
-//     .sidebar {
-//         &.sidebar-expand-sm {
-//             .navbar-toggler {
-//                 width: 3.5em;
-//                 height: 2.5em;
-//                 border: 0px;
-//             }
+@media (max-width: map-get($map: $grid-breakpoints, $key: "sm")) {
+    .sidebar {
+        &.sidebar-expand-sm {
+            .navbar-toggler {
+                width: 3.5em;
+                height: 2.5em;
+                border: 0px;
+            }
 
-//             .sidebar-nav {
-//                 &:not(.show) {
-//                     display: none;
-//                 }
-//             }
-//         }
-//     }
-// }
+            .sidebar-nav {
+                .collapse {
+                    &:not(.show) {
+                        display: none !important;
+                    }
+                }
+            }
+        }
+    }
+}
 
-// @media (max-width: map-get($map: $grid-breakpoints, $key: "md")) {
-//     .sidebar {
-//         &.sidebar-expand-md {
-//             .navbar-toggler {
-//                 width: 3.5em;
-//                 height: 2.5em;
-//                 border: 0px;
-//             }
+@media (max-width: map-get($map: $grid-breakpoints, $key: "md")) {
+    .sidebar {
+        &.sidebar-expand-md {
+            .navbar-toggler {
+                width: 3.5em;
+                height: 2.5em;
+                border: 0px;
+            }
 
-//             .sidebar-nav {
-//                 &:not(.show) {
-//                     display: none;
-//                 }
-//             }
-//         }
-//     }
-// }
+            .sidebar-nav {
+                .collapse {
+                    &:not(.show) {
+                        display: none !important;
+                    }
+                }
+            }
+        }
+    }
+}
 
-// @media (max-width: map-get($map: $grid-breakpoints, $key: "lg")) {
-//     .sidebar {
-//         &.sidebar-expand-lg {
-//             .navbar-toggler {
-//                 width: 3.5em;
-//                 height: 2.5em;
-//                 border: 0px;
-//             }
+@media (max-width: map-get($map: $grid-breakpoints, $key: "lg")) {
+    .sidebar {
+        &.sidebar-expand-lg {
+            .navbar-toggler {
+                width: 3.5em;
+                height: 2.5em;
+                border: 0px;
+            }
 
-//             .sidebar-nav {
-//                 &:not(.show) {
-//                     display: none;
-//                 }
-//             }
-//         }
-//     }
-// }
+            .sidebar-nav {
+                .collapse {
+                    &:not(.show) {
+                        display: none !important;
+                    }
+                }
+            }
+        }
+    }
+}
 
-// @media (max-width: map-get($map: $grid-breakpoints, $key: "xl")) {
-//     .sidebar {
-//         &.sidebar-expand-xl {
-//             .navbar-toggler {
-//                 width: 3.5em;
-//                 height: 2.5em;
-//                 border: 0px;
-//             }
+@media (max-width: map-get($map: $grid-breakpoints, $key: "xl")) {
+    .sidebar {
+        &.sidebar-expand-xl {
+            .navbar-toggler {
+                width: 3.5em;
+                height: 2.5em;
+                border: 0px;
+            }
 
-//             .sidebar-nav {
-//                 &:not(.show) {
-//                     display: none;
-//                 }
-//             }
-//         }
-//     }
-// }
+            .sidebar-nav {
+                .collapse {
+                    &:not(.show) {
+                        display: none !important;
+                    }
+                }
+            }
+        }
+    }
+}
