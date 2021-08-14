@@ -1,14 +1,14 @@
 import * as Common from './common';
 
 export type TableHead = Common.CommonElementProps & {
-    title: string,
+    title: string;
 }
 
 export type TableBody = Common.CommonElementProps & {
-    colspan?: number,
-    rowspan?: number,
-    title: string,
-    value: string | HTMLElement | React.ReactElement,
+    colspan?: number;
+    rowspan?: number;
+    title: string;
+    value: string | HTMLElement | React.ReactElement;
 }
 
 export type TablePaginationEventHander = (number) => void;
@@ -22,7 +22,7 @@ export type TablePaginationItem = Common.CommonElementProps & {
 }
 
 export type TablePagination = {
-    pagination: TablePaginationItem[],
+    pagination: TablePaginationItem[];
 }
 
 export function GetNumberTablePagination(start: number, end: number, index: number, max: number = 5, href: string = undefined, onClick: TablePaginationEventHander = undefined) : TablePagination {

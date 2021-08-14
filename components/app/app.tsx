@@ -1,6 +1,7 @@
 import * as $ from 'jquery'
 import * as React from 'react'
 import * as ReactDOM from 'react-dom';
+import * as ReactBootstrap from 'react-bootstrap';
 import * as Bootstrap from '../bootstrap/v4/js/index'
 
 // export class Root extends React.Component {
@@ -155,6 +156,13 @@ const Sidebar : Bootstrap.SidebarModule.SidebarProps = {
     expand: 'md',
 }
 
+const Form : Bootstrap.FormModule.FormProps = {
+    title: 'Form',
+    action: '#',
+    methode: 'get',
+    ok: 'Ok',
+}
+
 const Footer : Bootstrap.FooterModule.FooterProps = {
     title: 'Copyright EverGuard',
 };
@@ -162,9 +170,18 @@ const Footer : Bootstrap.FooterModule.FooterProps = {
 const Root = (
     <React.Fragment>
         <Bootstrap.Navbar {...Narbar}></Bootstrap.Navbar>
-        
         <Bootstrap.Sidebar {...Sidebar} contentElement={
-            <Bootstrap.Table {...Table}></Bootstrap.Table>
+            <React.Fragment>
+                <Bootstrap.Table {...Table}></Bootstrap.Table>
+                <Bootstrap.Form {...Form} contentElement={
+                    <React.Fragment>
+                        <ReactBootstrap.Form.Group controlId='email'>
+                            <ReactBootstrap.Form.Label>Email address</ReactBootstrap.Form.Label>
+                            <ReactBootstrap.Form.Control name='email' type="email" placeholder="Enter email" />
+                        </ReactBootstrap.Form.Group>
+                    </React.Fragment>
+                }></Bootstrap.Form>
+            </React.Fragment>
         }> 
         </Bootstrap.Sidebar>
 

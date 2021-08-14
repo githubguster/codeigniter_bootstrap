@@ -24,9 +24,14 @@ $sidebarColHighlight        : #ecdbff !default;
 /*
 table
 */
-$tableHeadBdDefault         : #ffffff !default;
+$tableHeadBgDefault         : #ffffff !default;
 $tableHeadColDefault        : #000000 !default;
 $tableBodyOddBgDefault      : #efefef !default;
 $tableBodyOddColDefault     : #000000 !default;
 $tableBodyEvenBgDefault     : #ffffff !default;
 $tableBodyEvenColDefault    : #000000 !default;
+
+/*
+form
+*/
+$formHeadBgDefault          : #f5e959;
