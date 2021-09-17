@@ -32,7 +32,7 @@ class NavbarItem extends React.Component<NavbarModule.Navbar> {
     }
 
     render() {
-        if(this.props.navbarIcon.subMenu) {
+        if(this.props.navbarIcon.subMenu && this.props.navbarIcon.subMenu.length > 0) {
             let id = this.props.number + '-' + Math.floor(Math.random() * Number.MAX_VALUE).toString(16);
             return (
                 <ReactBootstrap.NavDropdown id={id} title={this.props.name} active={this.props.navbarIcon.subMenu.some((item, index, array) => item.isAction === true)} >
@@ -136,9 +136,9 @@ export class NavbarFixedTop extends React.Component<NavbarModule.NavbarProps> {
                 </ReactBootstrap.Navbar.Brand>
                 <ReactBootstrap.Navbar.Toggle aria-controls={id}></ReactBootstrap.Navbar.Toggle>
                 <ReactBootstrap.Navbar.Collapse id={id}>
-                    {this.props.left && <ReactBootstrap.Nav className='mr-auto'><NavbarItems modules={this.props.left.modules} /></ReactBootstrap.Nav>}
-                    {this.props.default && <ReactBootstrap.Nav className='mr-auto'><NavbarItems modules={this.props.default.modules} /></ReactBootstrap.Nav>}
-                    {this.props.right && <ReactBootstrap.Nav className='ml-auto'><NavbarItems modules={this.props.right.modules} /></ReactBootstrap.Nav>}
+                    {this.props.left && this.props.left.modules.length > 0 && <ReactBootstrap.Nav className='mr-auto'><NavbarItems modules={this.props.left.modules} /></ReactBootstrap.Nav>}
+                    {this.props.default && this.props.default.modules.length > 0 && <ReactBootstrap.Nav className='mr-auto'><NavbarItems modules={this.props.default.modules} /></ReactBootstrap.Nav>}
+                    {this.props.right && this.props.right.modules.length > 0 && <ReactBootstrap.Nav className='ml-auto'><NavbarItems modules={this.props.right.modules} /></ReactBootstrap.Nav>}
                 </ReactBootstrap.Navbar.Collapse>
             </ReactBootstrap.Navbar>
         );

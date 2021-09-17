@@ -32,7 +32,7 @@ class SidebarItem extends React.Component<NavbarModule.Navbar> {
     }
 
     render() {
-        if(this.props.navbarIcon.subMenu) {
+        if(this.props.navbarIcon.subMenu && this.props.navbarIcon.subMenu.length > 0) {
             let id = this.props.number + '-' + Math.floor(Math.random() * Number.MAX_VALUE).toString(16);
             return (
                 <ReactBootstrap.Accordion defaultActiveKey={this.props.navbarIcon.subMenu.some((item, index, array) => item.isAction === true) && id}>
@@ -141,11 +141,11 @@ export class Sidebar extends React.Component<SidebarModule.SidebarProps> {
                     <ReactBootstrap.Navbar.Toggle data-toggle='collapse' data-target={'#' + id}></ReactBootstrap.Navbar.Toggle>
                     <div id={id} className='d-flex flex-column collapse w-100 h-100' role='table' aria-orientation='vertical'>
                         <div className={(this.props.expand ? 'flex-' + this.props.expand + '-fill' : 'flex-fill')}>
-                            {this.props.top && <SidebarItems modules={this.props.top.modules} />}
-                            {this.props.default && <SidebarItems modules={this.props.default.modules} />}
+                            {this.props.top && this.props.top.modules.length > 0 && <SidebarItems modules={this.props.top.modules} />}
+                            {this.props.default && this.props.default.modules.length > 0 && <SidebarItems modules={this.props.default.modules} />}
                         </div>
                         <ReactBootstrap.Row className='w-100 m-0 p-0'>
-                            {this.props.bottom && <SidebarItems modules={this.props.bottom.modules} />}
+                            {this.props.bottom && this.props.bottom.modules.length > 0 && <SidebarItems modules={this.props.bottom.modules} />}
                         </ReactBootstrap.Row>
                     </div>
                 </div>

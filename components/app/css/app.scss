@@ -11,4 +11,5 @@ $sidebarColHighlight  : #ffffff;
 
 $footerBgDefault      : #045004;
 
-@import '../bootstrap/v4/css/bootstrap';
+@import '../../bootstrap/v4/css/bootstrap';
+@import './share/bootstrap-full.scss'

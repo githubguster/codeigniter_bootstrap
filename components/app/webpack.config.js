@@ -4,13 +4,13 @@ var MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = [{
     mode: 'production',
-    entry: ['./app.tsx'],
+    entry: ['./js/app.tsx'],
     output: {
         filename: 'js/bootstrap_reactjs.min.js',
         path: path.resolve(__dirname, '../dist'),
     },
     resolve: {
-      extensions: ['.js', '.ts', '.tsx']  
+      extensions: ['.js', '.jsx', '.ts', '.tsx']  
     },
     optimization: {
         minimize: true,
@@ -19,7 +19,7 @@ module.exports = [{
     },
     module: {
         rules: [{
-            test: /\.jsx$|\.js$|\.tsx?$/,
+            test: /\.jsx?$|\.tsx?$/,
             exclude: /node_modules/,
             use: {
                 loader: 'babel-loader',
@@ -42,7 +42,7 @@ module.exports = [{
     }
 }, {
     mode: 'production',
-    entry: ['./app.scss'],
+    entry: ['./css/app.scss'],
     output: {
         path: path.resolve(__dirname, '../dist'),
     },
