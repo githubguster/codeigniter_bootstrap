@@ -9,6 +9,8 @@ var JAVASCRIPT_LIBRARY = [
     path.join(NODE_DIR, 'jquery/dist/jquery.min.js'),
     path.join(NODE_DIR, 'react/umd/react.production.min.js'),
     path.join(NODE_DIR, 'react-dom/umd/react-dom.production.min.js'),
+    path.join(NODE_DIR, 'redux/dist/redux.min.js'),
+    path.join(NODE_DIR, 'react-redux/dist/react-redux.min.js'),
     path.join(NODE_DIR, '@popperjs/core/dist/umd/popper.min.js'),
     path.join(NODE_DIR, 'bootstrap/dist/js/bootstrap.min.js'),
     path.join(NODE_DIR, '@fortawesome/fontawesome-free/js/all.min.js'),

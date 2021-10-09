@@ -1,6 +1,8 @@
 import * as $ from 'jquery'
 import * as React from 'react'
 import * as ReactDOM from 'react-dom';
+import * as Redux from 'redux';
+import * as ReactRedux from 'react-redux';
 import * as ReactBootstrap from 'react-bootstrap';
 import * as Bootstrap from '../../bootstrap/v4/js/index'
 import * as Share from './share/index'
@@ -10,6 +12,7 @@ const icon: string = 'data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1u
 
 const Content : Weather.WeatherModule.WeatherContentProps = {
     url: '/CentralWeatherBureau/Weather',
+    offset_sec: 30,
 };
 
 const NarbarContent : Share.BootstrapNavbarContentModule.BootstrapNavbarContentProps = {
@@ -28,7 +31,10 @@ const NarbarContent : Share.BootstrapNavbarContentModule.BootstrapNavbarContentP
     },
     main: {
     },
-    content: <Weather.WeatherContent {...Content}></Weather.WeatherContent>,
+    //content: <Weather.WeatherContent {...Content}></Weather.WeatherContent>,
+     content: <ReactRedux.Provider store={Weather.weatherStore}>
+                 <Weather.WeatherReduxContent {...Content}></Weather.WeatherReduxContent>
+              </ReactRedux.Provider>,
     footer: {
         title: 'Copyright guster',
         fixedBottom: true,

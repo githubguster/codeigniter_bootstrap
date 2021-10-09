@@ -39,6 +39,8 @@ module.exports = [{
         'jquery': '$',
         'prop-types': 'PropTypes',
         'react-bootstrap': 'ReactBootstrap',
+        'redux': 'Redux',
+        'react-redux': 'ReactRedux',
     }
 }, {
     mode: 'production',

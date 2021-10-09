@@ -22,6 +22,7 @@ export interface WeatherItemsProps extends Common.CommonElementProps {
 
 export interface WeatherContentProps extends Common.CommonElementProps {
     url: string,
+    offset_sec: number;
 }
 
 export type WeatherContentStatus = {
