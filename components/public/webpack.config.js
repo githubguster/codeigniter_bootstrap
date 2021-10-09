@@ -2,6 +2,7 @@ var path = require('path');
 // var webpack = require('webpack');
 var TerserPlugin = require('terser-webpack-plugin');
 var MergeIntoSingleFilePlugin = require('webpack-merge-and-include-globally');
+var CopyPlugin = require('copy-webpack-plugin');
 
 var NODE_DIR = path.resolve(__dirname, '../../node_modules');
 
@@ -13,7 +14,7 @@ var JAVASCRIPT_LIBRARY = [
     path.join(NODE_DIR, 'react-redux/dist/react-redux.min.js'),
     path.join(NODE_DIR, '@popperjs/core/dist/umd/popper.min.js'),
     path.join(NODE_DIR, 'bootstrap/dist/js/bootstrap.min.js'),
-    path.join(NODE_DIR, '@fortawesome/fontawesome-free/js/all.min.js'),
+    // path.join(NODE_DIR, '@fortawesome/fontawesome-free/js/all.min.js'),
     path.join(NODE_DIR, 'react-bootstrap/dist/react-bootstrap.min.js'),
 ];
 
@@ -74,6 +75,12 @@ module.exports = {
                 'js/components_public_library.min.js': JAVASCRIPT_LIBRARY,
                 'css/components_public_library.min.css': CSS_LIBRARY,
             }
+        }),
+        new CopyPlugin({
+            patterns:[{
+                from: path.join(NODE_DIR, '@fortawesome/fontawesome-free/webfonts'),
+                to: 'webfonts'
+            }],
         }),
     ]
 }
