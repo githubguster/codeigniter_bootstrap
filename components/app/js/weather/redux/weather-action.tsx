@@ -10,7 +10,7 @@ export const setWeather = (weather: WeatherModule.WeatherItemsProps) => ({
     weather: weather
 });
 
-export const getWeatherAjax = (url: string, finish?: (weather?: WeatherModule.WeatherItemsProps) => void) => {
+const getWeatherAjax = (url: string, finish?: (weather?: WeatherModule.WeatherItemsProps) => void) => {
     return (
         $.get({
             url: url,
@@ -69,6 +69,11 @@ export const getWeatherAjax = (url: string, finish?: (weather?: WeatherModule.We
     );
 }
 
-export const getWeather = (url: string, finish?: () => void) => dispatch => {
-    return dispatch(getWeatherAjax(url, finish));
+export const getWeather = (url: string, finish?: (weather?: WeatherModule.WeatherItemsProps) => void) => dispatch => {
+    return getWeatherAjax(url, weather => {
+        dispatch(setWeather(weather));
+        if(finish) {
+            finish(weather);
+        }
+    });
 }

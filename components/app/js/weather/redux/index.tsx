@@ -2,6 +2,7 @@ import * as React from 'react'
 import * as ReactBootstrap from 'react-bootstrap';
 import * as Redux from 'redux';
 import * as ReactRedux from 'react-redux';
+import { default as ReactThunk } from 'redux-thunk'
 import * as WeatherModule from '../weather-module';
 import * as WeatherComponents from './weather-components';
 import * as WeatherAction from './weather-action';
@@ -20,8 +21,7 @@ export class WeatherContent extends React.Component<WeatherContentProps>
     }
 
     getWeather() {
-        WeatherAction.getWeatherAjax(this.props.url, (weather) => {
-            this.props.dispatch(WeatherAction.setWeather(weather));
+        this.props.dispatch(WeatherAction.getWeather(this.props.url, (weather) => {
             let now = new Date();
             let date = new Date();
             date.setHours(date.getHours() + 1)
@@ -29,7 +29,7 @@ export class WeatherContent extends React.Component<WeatherContentProps>
             date.setSeconds(this.props.offset_sec);
             let timeout = date.getTime() - now.getTime();
             this.timerID = setTimeout(() => this.getWeather(), timeout);
-        });
+        }));
     }
     
     componentDidMount() {
@@ -59,7 +59,10 @@ const weatherStateToProps = state => {
 };
 
 export const weatherStore = Redux.createStore(
-    weatherReducer
+    weatherReducer,
+    Redux.applyMiddleware(
+        ReactThunk
+    )
 )
 
 export default ReactRedux.connect(weatherStateToProps)(WeatherContent);
